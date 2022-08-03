@@ -1,0 +1,18 @@
+{
+  "id":"swabianfuzzy",
+  "name":"Swabianfuzzy",
+  "shortName": "SwFuzzy",
+  "version": "0.01",
+  "description": "A Uhr für die Dag an dene es it drauf akommt.",
+  "readme": "README.md",
+  "icon":"swabianfuzzy.png",
+  "screenshots": [{"url":"swabianfuzzy-light.png"}],
+  "type": "clock",
+  "tags": "clock",
+  "supports": ["BANGLEJS2"],
+  "allow_emulator": true,
+  "storage": [
+    {"name":"swabianfuzzy.app.js","url":"swabianfuzzy.app.js"},
+    {"name":"swabianfuzzy.img","url":"swabianfuzzy.icon.js","evaluate":true}
+  ]
+}
