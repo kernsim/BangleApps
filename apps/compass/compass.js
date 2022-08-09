@@ -61,7 +61,7 @@ Bangle.on('mag', function(m) {
   g.drawImage(aimg,
               (W-ag.getWidth())/2,
               g.getHeight()-(ag.getHeight()+4));
-  oldHeading = m.heading;
+  oldHeading = 0.2 * m.heading + 0.8 * oldHeading;
 });
 
 g.clear(1);
