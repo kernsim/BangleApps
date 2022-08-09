@@ -31,6 +31,8 @@ function arrow(r,c) {
 
 var wasUncalibrated = false;
 var heading = 0;
+var lastRawHeading = 0;
+var rawHeading = 0;
 Bangle.on('mag', function(m) {
   if (!Bangle.isLCDOn()) return;
   g.reset();
@@ -56,7 +58,14 @@ Bangle.on('mag', function(m) {
   ag.setColor(0);
   arrow(heading,0);
   arrow(heading+180,0);
-  heading = 0.2 * m.heading + 0.8 * heading;
+  rawHeading = m.heading;
+  if (lastRawHeading>360 && rawHeading<60) {
+    heading = heading - 360;    
+  } else if (lastRawHeading<60 && rawHeading>300) {
+    heading = heading + 360;    
+  }
+  heading = 0.2 * rawHeading + 0.8 * heading;
+  lastRawHeading = rawHeading;
   arrow(heading,2);
   arrow(heading+180,3);
   g.drawImage(aimg,
