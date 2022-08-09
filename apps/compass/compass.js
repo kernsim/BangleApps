@@ -59,7 +59,7 @@ Bangle.on('mag', function(m) {
   arrow(heading,0);
   arrow(heading+180,0);
   rawHeading = m.heading;
-  if (lastRawHeading>360 && rawHeading<60) {
+  if (lastRawHeading>300 && rawHeading<60) {
     heading = heading - 360;    
   } else if (lastRawHeading<60 && rawHeading>300) {
     heading = heading + 360;    
