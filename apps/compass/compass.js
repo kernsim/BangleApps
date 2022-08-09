@@ -30,7 +30,7 @@ function arrow(r,c) {
 }
 
 var wasUncalibrated = false;
-var oldHeading = 0;
+var heading = 0;
 Bangle.on('mag', function(m) {
   if (!Bangle.isLCDOn()) return;
   g.reset();
@@ -54,14 +54,14 @@ Bangle.on('mag', function(m) {
 
 
   ag.setColor(0);
-  arrow(oldHeading,0);
-  arrow(oldHeading+180,0);
-  arrow(m.heading,2);
-  arrow(m.heading+180,3);
+  arrow(heading,0);
+  arrow(heading+180,0);
+  heading = 0.2 * m.heading + 0.8 * heading;
+  arrow(heading,2);
+  arrow(heading+180,3);
   g.drawImage(aimg,
               (W-ag.getWidth())/2,
               g.getHeight()-(ag.getHeight()+4));
-  oldHeading = 0.2 * m.heading + 0.8 * oldHeading;
 });
 
 g.clear(1);
